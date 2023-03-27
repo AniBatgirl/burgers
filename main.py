@@ -1,52 +1,54 @@
+from tkinter import *
 import tkinter
 from lib import *
-from tkinter import *
-from tkinter import ttk
+
+
+
 
 window = tkinter.Tk()
 window.title("hamburgr")
 window.geometry('600x800')
 window.configure(bg='#fff2e6')
 
+bulka = StringVar(window, "white", name="bulka")
+maso = StringVar(window, "maso1", name="maso")
+propecenost = StringVar(window, "maso1", name="propecenost")
+syr = StringVar(window, "0", "syr")
+slanina = StringVar(window, "0", "slanina")
+cibule = StringVar(window, "0", "cibule")
+salat = StringVar(window, "0", "salat")
+rajce = StringVar(window, "0", "rajce")
+omacka = StringVar(window, "0", "omacka")
+hodnoty = {"bulka":bulka, "maso":maso, "propecenost":propecenost, "syr":syr, "slanina":slanina, "cibule":cibule, "salat":salat, "rajce":rajce, "omacka":omacka}
 
-CheckVar1 = IntVar()
-CheckVar2 = IntVar()
-CheckVar3 = IntVar()
-CheckVar4 = IntVar()
-CheckVar5 = IntVar()
-CheckVar6 = IntVar()
-CheckVar7 = IntVar()
-CheckVar8 = IntVar()
-CheckVar9 = IntVar()
+vyber = Frame(window,bg='#fff2e6')
+burger = Frame(window,bg='#fff2e6')
+text = Label(vyber, text="Sestav si burger", relief=GROOVE, font=("Arial", 50), bg='#ff9900')
+text1 = Label(vyber, text="Jaká bulku bude chovat maso?", relief=SUNKEN, pady=2, font=("Arial", 20), bg='#ffcc99')
+text2 = Label(vyber, text="Vyber si druh masa", relief=SUNKEN, font=("Arial", 20), bg='#e63900')
+text3 = Label(vyber, text="Zvol si propečení masa", relief=SUNKEN, font=("Arial", 20), bg='#b37700')
+text4 = Label(vyber, text="Doplňující ingredience", relief=SUNKEN, font=("Arial", 20), bg='#ffff66')
+text5 = Label(vyber, text="Navol si zeleninu", relief=SUNKEN, font=("Arial", 20), bg='#99ff66')
+text6 = Label(vyber, text="Na jakou omáčku to dneska cítíš?", relief=SUNKEN, font=("Arial", 20), bg='#ffcc99')
 
-
-hodnoty = [IntVar() for i in range(0, 9)]
-text = Label(window, text="Sestav si burger", relief=GROOVE, font=("Arial", 10), bg='#ff9900')
-text1 = Label(window, text="Na jake maso mas dneska chut?", relief=SUNKEN, pady=2, font=("Arial", 10), bg='#ffcc99')
-text2 = Label(window, text="Vyber si druh masa", relief=SUNKEN, font=("Arial", 10), bg='#e63900')
-text3 = Label(window, text="Zvol si propečení masa", relief=SUNKEN, font=("Arial", 10), bg='#b37700')
-text4 = Label(window, text="Doplňující ingredience", relief=SUNKEN, font=("Arial", 10), bg='#ffff66')
-text5 = Label(window, text="Navol si zeleninu", relief=SUNKEN, font=("Arial", 10), bg='#99ff66')
-text6 = Label(window, text="Na jakou omáčku to dneska cítíš?", relief=SUNKEN, font=("Arial", 10), bg='#ffcc99')
-
-C1 = Radiobutton(window, text="sezamová", variable=hodnoty[0], value="sezamová", height=1, bg='#fff2e6')
-C2 = Radiobutton(window, text="sépiová", variable=hodnoty[0], value="sépiová", height=1, bg='#fff2e6')
-C3 = Radiobutton(window, text="hovězí", variable=hodnoty[1], value="hovězí", height=1, bg='#fff2e6')
-C4 = Radiobutton(window, text="kuřecí", variable=hodnoty[1], value="kuřecí", height=1, bg='#fff2e6')
-C5 = Radiobutton(window, text="telecí", variable=hodnoty[1], value="telecí", height=1, bg='#fff2e6')
-C6 = Radiobutton(window, text="rare", variable=hodnoty[2], value="rare", height=1, bg='#fff2e6')
-C7 = Radiobutton(window, text="medium", variable=hodnoty[2], value="medium", height=1, bg='#fff2e6')
-C8 = Radiobutton(window, text="well done", variable=hodnoty[2], value="well done", height=1, bg='#fff2e6')
-C9 = Checkbutton(window, text="sýr", variable=hodnoty[3], onvalue="sýr", offvalue="ne", height=1, bg='#fff2e6')
-C10 = Checkbutton(window, text="slanina", variable=hodnoty[4], onvalue="slanina", offvalue="ne", height=1, bg='#fff2e6')
-C11 = Checkbutton(window, text="cibule", variable=hodnoty[5], onvalue="cibule", offvalue="ne", height=1, bg='#fff2e6')
-C12 = Checkbutton(window, text="salat", variable=hodnoty[6], onvalue="salat", offvalue="ne", height=1, bg='#fff2e6')
-C13 = Checkbutton(window, text="rajcata", variable=hodnoty[7], onvalue="rajcata", offvalue="ne", height=1, bg='#fff2e6')
-C14 = Radiobutton(window, text="kečup", variable=hodnoty[8], value="kečup", height=1, bg='#fff2e6')
-C15 = Radiobutton(window, text="mayoneza", variable=hodnoty[8], value="mayoneza", height=1, bg='#fff2e6')
-C16 = Radiobutton(window, text="hořtice", variable=hodnoty[8], value="hořtice", height=1, bg='#fff2e6')
-C17 = Radiobutton(window, text="bez omáčky", variable=hodnoty[8], value="bez_omáčky", height=1, bg='#fff2e6')
-submit = Button(window, text="Vytvoř burger", height=1, bg='#ff9900', command=lambda:vytvor(hodnoty))
+C1 = Radiobutton(vyber, text="sezamová", variable=bulka, value="white", height=1, bg='#fff2e6')
+C2 = Radiobutton(vyber, text="sépiová", variable=bulka, value="black", height=1, bg='#fff2e6')
+C3 = Radiobutton(vyber, text="hovězí", variable=maso, value="maso1", height=1, bg='#fff2e6')
+C4 = Radiobutton(vyber, text="kuřecí", variable=maso, value="maso2", height=1, bg='#fff2e6')
+C5 = Radiobutton(vyber, text="telecí", variable=maso, value="maso3", height=1, bg='#fff2e6')
+C6 = Radiobutton(vyber, text="rare", variable=propecenost, value="maso1", height=1, bg='#fff2e6')
+C7 = Radiobutton(vyber, text="medium", variable=propecenost, value="maso2", height=1, bg='#fff2e6')
+C8 = Radiobutton(vyber, text="well done", variable=propecenost, value="maso3", height=1, bg='#fff2e6')
+C9 = Checkbutton(vyber, text="sýr", variable=syr, onvalue="syr", offvalue="0", height=1, bg='#fff2e6')
+C10 = Checkbutton(vyber, text="slanina", variable=slanina, onvalue="slanina", offvalue="ne", height=1, bg='#fff2e6')
+C11 = Checkbutton(vyber, text="cibule", variable=cibule, onvalue="cibule", offvalue="ne", height=1, bg='#fff2e6')
+C12 = Checkbutton(vyber, text="salat", variable=salat, onvalue="salat", offvalue="ne", height=1, bg='#fff2e6')
+C13 = Checkbutton(vyber, text="rajcata", variable=rajce, onvalue="rajcata", offvalue="ne", height=1, bg='#fff2e6')
+C14 = Radiobutton(vyber, text="kečup", variable=omacka, value="kecup", height=1, bg='#fff2e6')
+C15 = Radiobutton(vyber, text="mayoneza", variable=omacka, value="majoneza", height=1, bg='#fff2e6')
+C16 = Radiobutton(vyber, text="hořtice", variable=omacka, value="hortice", height=1, bg='#fff2e6')
+C17 = Radiobutton(vyber, text="bez omáčky", variable=omacka, value="0", height=1, bg='#fff2e6')
+submit = Button(vyber, text="Vytvor Burger", bg='#fff2e6', command=lambda: vytvor_burger(hodnoty, burger, vyber))
 
 text.pack()
 text1.pack()
@@ -72,8 +74,6 @@ C14.pack()
 C15.pack()
 C16.pack()
 C17.pack()
-submit.pack()
-
-
-
+vyber.pack()
+submit.pack(pady=10)
 window.mainloop()
